@@ -16,7 +16,7 @@ function About() {
                     width={250}
                     height={200}
                     alt="250X200"
-                    src="/img/israel.jpg"
+                    src="./img/israel.jpg"
                 />
                 <ReactBootStrap.Figure.Caption>
                     Nulla vitae elit libero, a pharetra augue mollis interdum -

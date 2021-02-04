@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/tradingcenter/static/css/main.ab4cf1ae.chunk.css",
-    "main.js": "/tradingcenter/static/js/main.9ceee8cc.chunk.js",
-    "main.js.map": "/tradingcenter/static/js/main.9ceee8cc.chunk.js.map",
+    "main.js": "/tradingcenter/static/js/main.f567c8da.chunk.js",
+    "main.js.map": "/tradingcenter/static/js/main.f567c8da.chunk.js.map",
     "runtime-main.js": "/tradingcenter/static/js/runtime-main.b744d49f.js",
     "runtime-main.js.map": "/tradingcenter/static/js/runtime-main.b744d49f.js.map",
     "static/css/2.ae9f1eb3.chunk.css": "/tradingcenter/static/css/2.ae9f1eb3.chunk.css",
@@ -13,13 +13,14 @@
     "index.html": "/tradingcenter/index.html",
     "static/css/2.ae9f1eb3.chunk.css.map": "/tradingcenter/static/css/2.ae9f1eb3.chunk.css.map",
     "static/css/main.ab4cf1ae.chunk.css.map": "/tradingcenter/static/css/main.ab4cf1ae.chunk.css.map",
-    "static/js/2.cde3f882.chunk.js.LICENSE.txt": "/tradingcenter/static/js/2.cde3f882.chunk.js.LICENSE.txt"
+    "static/js/2.cde3f882.chunk.js.LICENSE.txt": "/tradingcenter/static/js/2.cde3f882.chunk.js.LICENSE.txt",
+    "static/media/israel.8a3f26aa.jpg": "/tradingcenter/static/media/israel.8a3f26aa.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.b744d49f.js",
     "static/css/2.ae9f1eb3.chunk.css",
     "static/js/2.cde3f882.chunk.js",
     "static/css/main.ab4cf1ae.chunk.css",
-    "static/js/main.9ceee8cc.chunk.js"
+    "static/js/main.f567c8da.chunk.js"
   ]
 }

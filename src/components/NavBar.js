@@ -1,6 +1,7 @@
 import React from 'react';
 import * as ReactBootStrap from "react-bootstrap";
 import { Link } from 'react-router-dom';
+import imgCurr from '../imges/currency-exchange-emoji.png';
 
 function Navbar() {
         return (
@@ -10,10 +11,10 @@ function Navbar() {
                   style={{marginBottom: "0", paddingTop: "0",  paddingRight: "0", 
                           paddingLeft:"0", paddingBottom: "0"}} inverse 
                           collapseOnSelect expand="lg" bg="light" variant="light">
-            <ReactBootStrap.Navbar.Brand as={Link} to="/" style={{cursor: 'pointer'}}>
+            <ReactBootStrap.Navbar.Brand as={Link} to={process.env.PUBLIC_URL + "/"} style={{cursor: 'pointer'}}>
             <img
                   alt=""
-                  src="/img/currency-exchange-emoji.png"
+                  src={imgCurr}
                   width="30"
                   height="30"
                   className="d-inline-block align-top"

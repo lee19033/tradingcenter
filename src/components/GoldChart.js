@@ -45,16 +45,11 @@ function GoldChart() {
            }
         }
     })
-
-    let startDate = getCurrentDate('-',5); 
-    let endDate = getCurrentDate(); 
     
+    let goldAPI = getgoldAPI();
+    let silverAPI = getsilverAPI(); 
+
     const fetchData = () => {
-        const goldAPI = `${fetchURL}${API_KEY}${BASE_KEY}&start_date=${startDate}&end_date=${endDate}&symbols=${GOLD_CODE}`;
-        //'./json/XAU.json';
-        const silverAPI = `${fetchURL}${API_KEY}${BASE_KEY}&start_date=${startDate}&end_date=${endDate}&symbols=${SILVER_CODE}`;
-        //'./json/XAG.json';
-        //fetch(`${fetchURL}${API_KEY}${BASE_KEY}&start_date=${startDate}&end_date=${endDate}&symbols=${SILVER_CODE}`)
         
         const getGoldRates = axios.get(goldAPI);
         const getSilverRates = axios.get(silverAPI);
@@ -67,10 +62,11 @@ function GoldChart() {
                 const data = [] 
 
                 for (const [key,value] of Object.entries(allGold)) {
-                        let dateStr = new Date (key);                     
-                        labels.push(dateStr.toLocaleDateString("en-GB"))
-                        data.push((1/value.XAU) / (1/allSilver[`${key}`].XAG))                            
+                            let dateStr = new Date (key);                     
+                            labels.push(dateStr.toLocaleDateString("en-GB"))
+                            data.push((1/value.XAU) / (1/allSilver[`${key}`].XAG))                            
                 }
+            
 
                 let datasets = [
                 {
@@ -105,11 +101,16 @@ function GoldChart() {
                 setData({gold: {allGold}, silver: {allSilver}, lineData: {labels,datasets,options}})
 
                 })
-            )
+            ).catch(error => {
+                console.log('API error - fetch offline data...');
+                goldAPI = getgoldAPI_OffLINE(); 
+                silverAPI = getsilverAPI_OFFLINE(); 
+                fetchData(); 
+            })
     }
 
     useEffect(() => {
-        fetchData()         
+        fetchData();
     }, []) 
         
     return(
@@ -122,14 +123,34 @@ function GoldChart() {
     )
 }
 
-function getCurrentDate(separator='-', diff=0){
+    function getCurrentDate(separator='-', diff=0){
 
-    let newDate = new Date();
-    let date = newDate.getDate() - diff-1; 
-    let month = newDate.getMonth() + 1;
-    let year = newDate.getFullYear();
+        let dt = new Date();
+        dt.setDate( dt.getDate() - diff - 1 );
+        let date = dt.getDate(); 
+        let month = dt.getMonth() + 1;
+        let year = dt.getFullYear();
     
-    return `${year}${separator}${month<10?`0${month}`:`${month}`}${separator}${date}`;
-}
+        return `${year}${separator}${month<10?`0${month}`:`${month}`}${separator}${date<10?`0${date}`:`${date}`}`;
+    }
+
+    let startDate = getCurrentDate('-',5);   
+    let endDate = getCurrentDate();
+    
+    const getgoldAPI = () => {
+        return `${fetchURL}${API_KEY}${BASE_KEY}&start_date=${startDate}&end_date=${endDate}&symbols=${GOLD_CODE}`;
+    }
+    const getsilverAPI = () => {
+        return  `${fetchURL}${API_KEY}${BASE_KEY}&start_date=${startDate}&end_date=${endDate}&symbols=${SILVER_CODE}`;
+    }
+
+    const getgoldAPI_OffLINE = () => {
+        return process.env.PUBLIC_URL + '/json/XAU.json';
+    }
+
+    const getsilverAPI_OFFLINE = () => {
+        return process.env.PUBLIC_URL + '/json/XAG.json';
+    }
+
 
 export default GoldChart; 

@@ -1,5 +1,6 @@
 import React from 'react';
 import * as ReactBootStrap from 'react-bootstrap';
+import aboutImg from '../imges/israel.jpg';
 
 function About() {
     return (
@@ -16,7 +17,7 @@ function About() {
                     width={250}
                     height={200}
                     alt="250X200"
-                    src="./img/israel.jpg"
+                    src={aboutImg}
                 />
                 <ReactBootStrap.Figure.Caption>
                     Nulla vitae elit libero, a pharetra augue mollis interdum -

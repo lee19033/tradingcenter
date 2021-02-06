@@ -2,6 +2,8 @@ import React from 'react';
 import * as ReactBootStrap from "react-bootstrap";
 
 function Currency(props) {
+    const imaName = props.value.currency.key;
+    const logo = process.env.PUBLIC_URL + `/img/${imaName}.png`; 
     const variant = 'Dark';
     return(
             <ReactBootStrap.Card
@@ -11,14 +13,13 @@ function Currency(props) {
             style={{ maxWidth: '100Em' }}
             className="mb-1"
             >
-           <ReactBootStrap.Card.Header>
-           
+           <ReactBootStrap.Card.Header>           
                 USD/{props.value.currency.key}&nbsp;
                 {parseFloat(props.value.rate.value).toFixed(5)}
                 &nbsp;
                < img
                   alt=""
-                  src={`./img/${props.value.currency.key}.png`}
+                  src={logo}
                   width="30"
                   height="30"
                   className="d-inline-block align-middle"

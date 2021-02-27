@@ -2,9 +2,12 @@ import React from 'react';
 import * as ReactBootStrap from 'react-bootstrap';
 import aboutImg from '../imges/israel.jpg';
 
-function About() {
-    return (
-        <div className='about-section' style={{marginLeft: '20px'}}>
+const About = () => (
+    <div class="container ml-1">
+    
+          <div class="row">
+         <div class="col-xl col-md-8">   
+        <div className='about-section'>
            <h1>About Us </h1>
            <p>@Trading Center App</p>
            <p>Trading center app are businesses working with different 
@@ -25,7 +28,9 @@ function About() {
                 </ReactBootStrap.Figure.Caption>
            </ReactBootStrap.Figure>
         </div>
-    )
-}
+        </div>
+        </div>
+        </div>    
+)
 
 export default About;

@@ -3,13 +3,12 @@ import * as ReactBootStrap from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import imgCurr from '../imges/currency-exchange-emoji.png';
 
-function Navbar() {
-        return (
+const Navbar = () => (
       <ReactBootStrap.Row>
         <ReactBootStrap.Col>               
             <ReactBootStrap.Navbar 
                   style={{marginBottom: "0", paddingTop: "0",  paddingRight: "0", 
-                          paddingLeft:"0", paddingBottom: "0"}} inverse 
+                          paddingLeft:"0", paddingBottom: "0"}} inverse="true" 
                           collapseOnSelect expand="lg" bg="light" variant="light">
             <ReactBootStrap.Navbar.Brand as={Link} to={process.env.PUBLIC_URL + "/"} style={{cursor: 'pointer'}}>
             <img
@@ -34,7 +33,6 @@ function Navbar() {
           </ReactBootStrap.Navbar>
           </ReactBootStrap.Col>
       </ReactBootStrap.Row>
-         );
-}
+)
 
 export default Navbar; 

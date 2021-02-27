@@ -7,10 +7,8 @@ import { Route, BrowserRouter as Router, Switch} from 'react-router-dom';
 import About from "./pages/About.js";
 import Contact from "./pages/contact.js";
 
-function App() {
-  console.log(process.env.PUBLIC_URL);
-  return (
-    <div>
+const  App = () => (  
+   <div>
       <Router>
        <TopBar />     
        <Navbar />
@@ -23,7 +21,6 @@ function App() {
       </Router>
       <Footer />
     </div>
-  );
-}
+)
 
 export default App;

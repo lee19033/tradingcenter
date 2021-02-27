@@ -5,7 +5,7 @@ const Footer = () => (
       <p>@2021 Trading Center App</p>
     </div>
   
-  );
+);
 
 export default Footer; 
 

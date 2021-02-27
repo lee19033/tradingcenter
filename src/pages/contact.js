@@ -3,7 +3,7 @@ import  * as ReactBootStrap from 'react-bootstrap';
 import emailjs from 'emailjs-com';
 import{ init } from 'emailjs-com';
 
-function Contact() {
+const Contact = () =>  {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -16,10 +16,10 @@ function Contact() {
   
   const handleSubmit = (evt) => {
       evt.preventDefault();
-      init("user_tphg43V1NYEK8c4ENbLRY");
-      emailjs.sendForm('service_3e98wd5', 'template_bjtfk1b', evt.target)
+      init(process.env.REACT_APP_EMAILJS_INIT);
+      emailjs.sendForm(process.env.REACT_APP_EMAILJS_SERVICE,
+                       process.env.REACT_APP_EMAILJS_TEMPLATE, evt.target)
       .then((result) => {
-          console.log(result.text);
           handleShow();
           clearName();
           clearEmail(); 
@@ -28,9 +28,11 @@ function Contact() {
       });
   }
 
-    return(
-    
-        <ReactBootStrap.Row style={{marginLeft: '10px', width:'40%'}}>
+    return(    
+        <div class="container ml-1">
+          <div class="row">
+            <div class="col-6">
+        <ReactBootStrap.Row>
         <ReactBootStrap.Col>
           <p></p>
            <h2>Contact US:</h2>
@@ -77,6 +79,9 @@ function Contact() {
           </ReactBootStrap.Modal>
   
   </ReactBootStrap.Row>
+  </div>
+  </div>
+  </div>
             )
 }
 

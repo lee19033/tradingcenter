@@ -4,12 +4,12 @@ import { Line } from 'react-chartjs-2';
 import axios from 'axios';
 
 const fetchURL = "https://metals-api.com/api/timeseries?access_key=";
-const API_KEY = "txmtx7nvg27hjp4zlg4sd352roudu7tq0mlo4mlrmz6mf4ilt4uvf36voeah";
+const API_KEY = process.env.REACT_APP_API_KEY;
 const BASE_KEY = "&base=usd"; 
 const GOLD_CODE= "XAU";
 const SILVER_CODE = "XAG";
 
-function GoldChart() {
+const GoldChart = () =>  {
     const [Data,setData] = useState({
         gold: {},
         silver: {}, 
@@ -46,8 +46,8 @@ function GoldChart() {
         }
     })
     
-    let goldAPI = getgoldAPI();
-    let silverAPI = getsilverAPI(); 
+    let goldAPI = getgoldAPI();//getgoldAPI_OffLINE();//getgoldAPI();
+    let silverAPI = getsilverAPI();//getsilverAPI_OFFLINE();//getsilverAPI(); 
 
     const fetchData = () => {
         
@@ -111,27 +111,31 @@ function GoldChart() {
 
     useEffect(() => {
         fetchData();
-    }, []) 
+    }, []); 
         
     return(
         <ReactBootStrap.Row>
                 <ReactBootStrap.Col>
-                          <Line data={Data.lineData} options={Data.lineData.options} height='450px'></Line>
+                          <Line data={Data.lineData} options={Data.lineData.options} height={450}></Line>
                   </ReactBootStrap.Col>
         </ReactBootStrap.Row>
            
     )
 }
 
-    function getCurrentDate(separator='-', diff=0){
-
-        let dt = new Date();
-        dt.setDate( dt.getDate() - diff - 1 );
-        let date = dt.getDate(); 
-        let month = dt.getMonth() + 1;
-        let year = dt.getFullYear();
-    
-        return `${year}${separator}${month<10?`0${month}`:`${month}`}${separator}${date<10?`0${date}`:`${date}`}`;
+    function getCurrentDate(separator='-', diff=0)
+    {
+        try {
+            let dt = new Date();
+            dt.setDate( dt.getDate() - diff - 1 );
+            let date = dt.getDate(); 
+            let month = dt.getMonth() + 1;
+            let year = dt.getFullYear();    
+            return `${year}${separator}${month<10?`0${month}`:`${month}`}${separator}${date<10?`0${date}`:`${date}`}`;
+        }
+        catch(error) {
+            console.log(error);
+        }
     }
 
     let startDate = getCurrentDate('-',5);   

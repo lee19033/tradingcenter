@@ -1,11 +1,13 @@
 import React from 'react';
 import * as ReactBootStrap from "react-bootstrap";
 
-function Currency(props) {
-    const imaName = props.value.currency.key;
-    const logo = process.env.PUBLIC_URL + `/img/${imaName}.png`; 
-    const variant = 'Dark';
-    return(
+const Currency = (props) => {
+
+      const imaName = props.value.currency.key;
+      const logo = process.env.PUBLIC_URL + `/img/${imaName}.png`; 
+      const variant = 'Dark';
+      
+      return (    
             <ReactBootStrap.Card
             bg={variant.toLowerCase()}
             key={props.value.currency.key}
@@ -26,7 +28,7 @@ function Currency(props) {
                 />
             </ReactBootStrap.Card.Header>            
             </ReactBootStrap.Card>    
-    )
+           )
 }
 
 export default Currency

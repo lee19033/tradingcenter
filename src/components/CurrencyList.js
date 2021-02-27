@@ -17,7 +17,7 @@ const CurrencyList = (props) => {
             {currencies.map(currency => {
                 return (
                     <ReactBootStrap.Col>
-                         <Currency key={currency.currency} value={currency} />
+                         <Currency key={currency.key} value={currency} />
                     </ReactBootStrap.Col>
                 )
             })
